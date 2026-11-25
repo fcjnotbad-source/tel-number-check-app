@@ -1,0 +1,31 @@
+name: 使用反馈
+description: 反馈来电提示、手动查号、下载安装问题，或提出功能建议。
+body:
+  - type: markdown
+    attributes:
+      value: 反馈将公开显示。请用遮挡后的号码举例，并在上传截图前遮住电话号码、联系人姓名及其他个人信息。
+  - type: dropdown
+    id: topic
+    attributes:
+      label: 反馈与哪项功能有关？
+      options:
+        - 来电识别与提示
+        - 手动查号与结果展示
+        - 下载、安装或更新
+        - 功能建议
+        - 其他
+    validations:
+      required: true
+  - type: textarea
+    id: details
+    attributes:
+      label: 情况描述
+      description: 请描述操作步骤、实际看到的情况，以及期望的结果。提出建议时，说明使用场景即可。
+    validations:
+      required: true
+  - type: input
+    id: device
+    attributes:
+      label: 设备和版本
+      description: 方便的话，请填写手机型号、Android 版本和来电快检版本。
+      placeholder: 手机型号 / Android 版本 / 应用版本
