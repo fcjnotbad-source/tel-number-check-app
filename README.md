@@ -6,6 +6,10 @@
 
 [访问官网](https://tel.pdos.work/) · [下载 Android 版](https://vdb.aivest.art/apps/p-dfca67eab2a440b2ae3e) · [提交使用反馈](https://github.com/fcjnotbad-source/tel-number-check-app/issues/new?template=feedback.yml)
 
+此软件来自AI系统独立开发者：常见
+
+本仓库开放完整 Android 客户端源码。你可以查看[来电识别](app/src/main/java/com/fcj/telnumbercheck/call/)、[联网查号](app/src/main/java/com/fcj/telnumbercheck/search/)和[本机存储](app/src/main/java/com/fcj/telnumbercheck/data/)的实现，也可以自行构建安装包。
+
 ## 第一次使用
 
 1. 从上方 Android 下载入口进入应用工厂，在手机上下载安装包。
@@ -20,8 +24,33 @@
 
 ## 哪些数据保存在手机上？
 
-使用应用无需注册。遇到未命中缓存的陌生号码，手机会把号码发送给搜索引擎查询。开发者服务器不接收查询号码或结果。有效结果在手机上缓存 180 天，自己添加的「疑似骚扰电话」标记也保存在本机，可手动清除。卸载应用会删除本机缓存和标记。
+无需注册或登录。命中有效缓存时，手机直接读取本地结果。未命中缓存或主动重新查询时，手机将待查号码直接发送给百度、360 搜索和搜狗搜索。号码整理在本机完成，开发者服务器不经手查号请求。
+
+有效结果在应用内缓存 180 天。个人标记可以手动清除，卸载可删除本机应用数据。Android 系统备份或换机迁移可能包含这些数据，取决于设备和系统设置。[完整隐私说明](PRIVACY.md)
 
 ## 反馈问题或建议
 
 请写明手机型号、Android 版本、来电快检版本，以及遇到问题时看到的情况。反馈记录公开可见，如附截图，请遮住完整电话号码、联系人姓名等个人信息。[提交反馈](https://github.com/fcjnotbad-source/tel-number-check-app/issues/new?template=feedback.yml) · [查看已有反馈](https://github.com/fcjnotbad-source/tel-number-check-app/issues)
+
+
+## 从源码构建
+
+使用 JDK 17 和 Android SDK Platform 35，在仓库根目录运行：
+
+```sh
+./gradlew testDebugUnitTest assembleDebug
+```
+
+Android Studio 可直接打开本仓库。命令行构建可通过 `ANDROID_HOME` 指定 SDK 目录。生成的调试包位于 `app/build/outputs/apk/debug/app-debug.apk`，由本机调试密钥签名。
+
+用 Node.js 和 Playwright 运行离线网页样本测试：
+
+```sh
+npm install --no-save --package-lock=false playwright
+npx playwright install chromium
+node scripts/test-search-extractor.cjs
+```
+
+## 开源许可
+
+原创客户端与官网代码采用 [MIT 许可证](LICENSE)，允许使用、修改和再分发。Gradle Wrapper 使用 [Apache 2.0 许可证](gradle/wrapper/LICENSE)，省市数据沿用[上游 MIT 许可证](data/administrative-divisions/LICENSE)。第三方库按各自的许可分发。

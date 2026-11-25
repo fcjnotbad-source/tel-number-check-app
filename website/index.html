@@ -3,19 +3,19 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>来电快检官网｜Android 陌生来电识别与号码查询</title>
+    <title>来电快检官网｜开源 Android 来电识别，无需登录</title>
     <meta
       name="description"
-      content="来电快检是一款适用于 Android 10 及以上的陌生来电识别与手动查号工具。来电正常响铃，同时查询号码服务卡，显示可用的名称、地区、运营商或标记。"
+      content="来电快检是常见开发的开源 Android 陌生来电识别与查号工具，无需登录。手机先查本机缓存，未命中或主动刷新时才把号码发给搜索引擎。号码查询不经过开发者服务器。"
     />
     <link rel="canonical" href="https://tel.pdos.work/" />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="zh_CN" />
     <meta property="og:site_name" content="来电快检" />
-    <meta property="og:title" content="来电快检官网｜Android 陌生来电识别与号码查询" />
+    <meta property="og:title" content="来电快检官网｜开源 Android 来电识别，无需登录" />
     <meta
       property="og:description"
-      content="来电快检是一款适用于 Android 10 及以上的陌生来电识别与手动查号工具。来电正常响铃，同时查询号码服务卡，显示可用的名称、地区、运营商或标记。"
+      content="来电快检是常见开发的开源 Android 陌生来电识别与查号工具，无需登录。手机先查本机缓存，未命中或主动刷新时才把号码发给搜索引擎。号码查询不经过开发者服务器。"
     />
     <meta property="og:url" content="https://tel.pdos.work/" />
     <link rel="icon" href="/icon.png" type="image/png" />
@@ -26,13 +26,15 @@
         "@type": "SoftwareApplication",
         "@id": "https://tel.pdos.work/#app",
         "name": "来电快检",
+        "author": {"@type": "Person", "name": "常见", "jobTitle": "AI系统独立开发者"},
+        "isBasedOn": {"@type": "SoftwareSourceCode", "name": "来电快检 Android 客户端", "codeRepository": "https://github.com/fcjnotbad-source/tel-number-check-app", "programmingLanguage": "Kotlin", "license": "https://github.com/fcjnotbad-source/tel-number-check-app/blob/main/LICENSE"},
         "url": "https://tel.pdos.work/",
         "sameAs": "https://github.com/fcjnotbad-source/tel-number-check-app",
         "downloadUrl": "https://vdb.aivest.art/apps/p-dfca67eab2a440b2ae3e",
         "operatingSystem": "Android 10+",
         "applicationCategory": "UtilitiesApplication",
         "inLanguage": "zh-CN",
-        "description": "来电快检是一款适用于 Android 10 及以上的陌生来电识别与手动查号工具。来电正常响铃，同时查询号码服务卡，显示可用的名称、地区、运营商或标记。",
+        "description": "来电快检是常见开发的开源 Android 陌生来电识别与查号工具，无需登录。手机先查本机缓存，未命中或主动刷新时才把号码发给搜索引擎。号码查询不经过开发者服务器。",
         "featureList": ["陌生来电识别", "手动查号", "本机标记", "查询结果缓存"]
       }
     </script>
@@ -41,6 +43,22 @@
         "@context": "https://schema.org",
         "@type": "FAQPage",
         "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "需要注册吗？在哪里可以查看源码？",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "无需注册或登录，安装后即可手动查号。Android 客户端源码、构建脚本和测试都发布在 GitHub。原创代码采用 MIT 许可证，第三方组件和数据保留各自的许可证。"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "哪些数据保存在手机上？",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "有效的号码信息在本机缓存 180 天，个人标记也保存在应用数据里。你可以在应用里清除自己的标记。Android 系统备份和换机迁移可能复制这些数据，具体取决于设备设置。"
+            }
+          },
           {
             "@type": "Question",
             "name": "来电时会自动挂断电话吗？",
@@ -70,7 +88,7 @@
             "name": "电话号码会发送给谁？",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "当你发起联网查询时，设备会把号码提交给百度、360 搜索和搜狗搜索。号码查询不经过开发者服务器。有效查询结果保存在本机 180 天，个人标记保存在本机，可在应用中清除。"
+              "text": "来电识别和手动查号都会先查手机上的缓存。没有有效缓存，或你点「重新查询」时，手机会把所查号码直接发给百度、360 搜索和搜狗搜索。开发者服务器不经手这些号码。"
             }
           }
         ]
@@ -97,18 +115,19 @@
     <main id="main">
       <section class="wrap hero">
         <div class="lead">
-          <p class="platform"><span aria-hidden="true"></span>Android 10 及以上</p>
+          <p class="platform"><span aria-hidden="true"></span>开源应用 · Android 10 及以上</p>
           <h1>陌生来电，<br /><em>先看一眼。</em></h1>
           <p class="intro">
-            来电快检帮你识别陌生来电，也能手动查号。手机响铃时，看看对方可能是谁，再决定要不要接。
+            <strong>无需注册或登录。</strong>手机响铃时，来电快检先查本机缓存。没有有效缓存或你主动刷新时，才把所查号码发给搜索引擎。
           </p>
           <div class="actions">
             <a class="button" href="https://vdb.aivest.art/apps/p-dfca67eab2a440b2ae3e"
               ><span class="download-ico" aria-hidden="true">↓</span> Android 版下载</a
             ><a class="textlink" href="https://github.com/fcjnotbad-source/tel-number-check-app"
-              >GitHub 产品介绍</a
+              >查看 GitHub 源码</a
             >
           </div>
+          <p class="developer-credit">此软件来自AI系统独立开发者：常见</p>
         </div>
         <div class="hero-image">
           <figure
@@ -173,7 +192,7 @@
               <span class="badge-icon flag" aria-hidden="true">⚑</span>
               <h3>碰到骚扰，自己标记</h3>
               <p>
-                把号码标为「疑似骚扰电话」，以后再来电时多一条提醒。只有这部手机保存你的标记，也可以随时清除。
+                把号码标为「疑似骚扰电话」，以后再来电时多一条提醒。标记保存在应用数据里，你可以随时清除。
               </p>
             </article>
           </div>
@@ -187,6 +206,14 @@
         </div>
         <div class="faq-list">
           <details open>
+            <summary>需要注册吗？在哪里可以查看源码？</summary>
+            <p>无需注册或登录，安装后即可手动查号。Android 客户端源码、构建脚本和测试都发布在 GitHub。原创代码采用 MIT 许可证，第三方组件和数据保留各自的许可证。</p>
+          </details>
+          <details>
+            <summary>哪些数据保存在手机上？</summary>
+            <p>有效的号码信息在本机缓存 180 天，个人标记也保存在应用数据里。你可以在应用里清除自己的标记。Android 系统备份和换机迁移可能复制这些数据，具体取决于设备设置。</p>
+          </details>
+          <details>
             <summary>来电时会自动挂断电话吗？</summary>
             <p>系统会照常响铃，来电快检在后台查询，并在有结果时展示提示卡。接听或挂断由你决定。</p>
           </details>
@@ -206,9 +233,7 @@
           <details>
             <summary>电话号码会发送给谁？</summary>
             <p>
-              当你发起联网查询时，设备会把号码提交给百度、360
-              搜索和搜狗搜索。号码查询不经过开发者服务器。有效查询结果保存在本机 180
-              天，个人标记保存在本机，可在应用中清除。
+              来电识别和手动查号都会先查手机上的缓存。没有有效缓存，或你点「重新查询」时，手机会把所查号码直接发给百度、360 搜索和搜狗搜索。开发者服务器不经手这些号码。
             </p>
           </details>
         </div>
@@ -221,7 +246,7 @@
         >
         <nav aria-label="页脚导航">
           <a href="/privacy/">隐私说明</a
-          ><a href="https://github.com/fcjnotbad-source/tel-number-check-app">GitHub 展示库</a
+          ><a href="https://github.com/fcjnotbad-source/tel-number-check-app">GitHub 源码</a
           ><a href="https://github.com/fcjnotbad-source/tel-number-check-app/issues">问题反馈</a>
         </nav>
       </div>

@@ -168,6 +168,15 @@ nav a {
   font-weight: 620;
   font-size: 0.96rem;
 }
+.developer-credit {
+  margin: 18px 0 0;
+  color: #49635b;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+.hero .intro strong {
+  color: var(--ink);
+}
 .hero-image {
   min-width: 0;
 }
