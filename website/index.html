@@ -106,7 +106,7 @@
           <a href="/#how">使用方法</a><a href="/#faq">常见问题</a
           ><a
             class="nav-feedback"
-            href="https://github.com/fcjnotbad-source/tel-number-check-app/issues"
+            href="/#feedback"
             >反馈</a
           >
         </nav>
@@ -238,6 +238,37 @@
           </details>
         </div>
       </section>
+      <section class="feedback" id="feedback" aria-labelledby="feedback-title">
+        <div class="wrap feedback-layout">
+          <div>
+            <h2 id="feedback-title">让它更好用，<br />从你的反馈开始。</h2>
+            <p class="feedback-intro">
+              哪次来电没认出来，或是哪个提示看不懂？告诉我当时的使用场景。新想法也欢迎，中文、英文都可以。
+            </p>
+          </div>
+          <div class="feedback-contact">
+            <div class="feedback-actions">
+              <a class="button" href="https://github.com/fcjnotbad-source/tel-number-check-app/issues/new?template=feedback.yml">提交反馈</a>
+              <a class="button feedback-secondary" href="https://github.com/fcjnotbad-source/tel-number-check-app">前往 GitHub</a>
+            </div>
+            <p class="feedback-note">GitHub 反馈公开可见。请隐去完整电话号码、联系人姓名和截图中的个人信息。</p>
+            <div class="feedback-email">
+              <a href="mailto:fcjnotbad@gmail.com" class="feedback-mailto">
+                <span class="envelope" aria-hidden="true">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2.5" y="4.5" width="19" height="15" rx="3" />
+                    <path d="m4 7 6.9 5.1a1.85 1.85 0 0 0 2.2 0L20 7" />
+                  </svg>
+                </span>
+                <span><span class="feedback-email-label">给开发者常见写邮件</span>
+                  <span id="feedback-address">fcjnotbad@gmail.com</span></span>
+              </a>
+              <button type="button" id="copy-feedback-email" aria-label="复制邮箱地址" hidden>复制</button>
+            </div>
+            <p class="copy-status" id="feedback-copy-status" role="status"></p>
+          </div>
+        </div>
+      </section>
     </main>
     <footer>
       <div class="wrap foot">
@@ -247,9 +278,28 @@
         <nav aria-label="页脚导航">
           <a href="/privacy/">隐私说明</a
           ><a href="https://github.com/fcjnotbad-source/tel-number-check-app">GitHub 源码</a
-          ><a href="https://github.com/fcjnotbad-source/tel-number-check-app/issues">问题反馈</a>
+          ><a href="/#feedback">问题反馈</a>
         </nav>
       </div>
     </footer>
+    <script>
+      if (navigator.clipboard?.writeText) {
+        const copyButton = document.getElementById("copy-feedback-email");
+        const address = document.getElementById("feedback-address");
+        const status = document.getElementById("feedback-copy-status");
+        let resetStatus;
+        copyButton.hidden = false;
+        copyButton.addEventListener("click", async () => {
+          try {
+            await navigator.clipboard.writeText(address.textContent);
+            status.textContent = "邮箱地址已复制";
+          } catch {
+            status.textContent = "请选中邮箱地址后复制";
+          }
+          clearTimeout(resetStatus);
+          resetStatus = setTimeout(() => { status.textContent = ""; }, 2400);
+        });
+      }
+    </script>
   </body>
 </html>

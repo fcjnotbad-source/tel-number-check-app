@@ -10,7 +10,8 @@
 - [隐私说明](https://tel.pdos.work/privacy/)
 - [Android 官方下载](https://vdb.aivest.art/apps/p-dfca67eab2a440b2ae3e)
 - [GitHub 开源仓库](https://github.com/fcjnotbad-source/tel-number-check-app)
-- [问题反馈](https://github.com/fcjnotbad-source/tel-number-check-app/issues)
+- [反馈与联系开发者](https://tel.pdos.work/#feedback)
+- [开发者常见的联系邮箱](mailto:fcjnotbad@gmail.com)
 - [Android 客户端源码](https://github.com/fcjnotbad-source/tel-number-check-app/tree/main/app)
 - [原创代码的 MIT 许可证](https://github.com/fcjnotbad-source/tel-number-check-app/blob/main/LICENSE)
 
